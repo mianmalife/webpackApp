@@ -1,4 +1,4 @@
-# empty-project
+# webpack5-project
 
 Empty project.
 
