@@ -1,7 +1,6 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const config = {
   entry: [
     'react-hot-loader/patch',
@@ -9,7 +8,10 @@ const config = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js'
+    filename: '[name].[contenthash].js',
+    assetModuleFilename: 'images/[hash][ext][query]',
+    publicPath: './',
+    clean: true
   },
   module: {
     rules: [
@@ -54,7 +56,12 @@ const config = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        type: 'asset/resource'
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 12 * 1024 // 12kb
+          }
+        }
       }
     ]
   },
@@ -79,8 +86,7 @@ const config = {
       templateContent: ({ htmlWebpackPlugin }) => '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>' + htmlWebpackPlugin.options.title + '</title></head><body><div id=\"app\"></div></body></html>',
       filename: 'index.html',
     }),
-    new MiniCssExtractPlugin(),
-    new CleanWebpackPlugin()
+    new MiniCssExtractPlugin()
   ],
   optimization: {
     runtimeChunk: 'single',
