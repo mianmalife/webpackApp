@@ -1,18 +1,20 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+console.log(process.env.NODE_ENV)
+const env = process.env.NODE_ENV
+const OUT_PUT = {
+  path: path.resolve(__dirname, 'dist'),
+  filename: '[name].[contenthash].js',
+  assetModuleFilename: 'images/[hash][ext][query]',
+  clean: true
+}
 const config = {
   entry: [
     'react-hot-loader/patch',
     './src/index.tsx'
   ],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-    assetModuleFilename: 'images/[hash][ext][query]',
-    publicPath: './',
-    clean: true
-  },
+  output: env === 'development' ? OUT_PUT : Object.assign(OUT_PUT, { publicPath: './' }),
   module: {
     rules: [
       {
@@ -73,10 +75,12 @@ const config = {
       '.ts'
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom'
+      'react-dom': '@hot-loader/react-dom',
+      '@': path.resolve(__dirname, 'src')
     }
   },
   devServer: {
+    port: 9002,
     static: {
       directory: path.resolve(__dirname, 'dist')
     }
