@@ -11,7 +11,8 @@
     "build-dev": "webpack --mode development",
     "build-prod": "cross-env NODE_ENV=production webpack --mode production",
     "start": "cross-env NODE_ENV=development webpack serve --hot --mode development",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit-msg": "npx --no-install commitlint --edit "
   },
   "husky": {
     "hooks": {
