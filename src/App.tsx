@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
-const a = 6
 
 function App(props: any) {
   const [count, setCount] = React.useState(0);
