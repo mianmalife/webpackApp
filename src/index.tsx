@@ -1,8 +1,9 @@
 import * as React from 'react';
-import * as ReactDOM from "react-dom";
-
+import * as ReactDOM from 'react-dom';
 import App from './App';
-import "./styles.scss";
+import './styles.scss';
 
-var mountNode = document.getElementById("app");
-ReactDOM.render(<App name="Webpack" />, mountNode);
+const H = 'hello';
+
+const mountNode = document.getElementById('app');
+ReactDOM.render(<App name={H} />, mountNode);

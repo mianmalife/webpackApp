@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-console.log(process.env.NODE_ENV)
+const ESLintPlugin = require('eslint-webpack-plugin');
 const env = process.env.NODE_ENV
 const OUT_PUT = {
   path: path.resolve(__dirname, 'dist'),
@@ -90,7 +90,11 @@ const config = {
       templateContent: ({ htmlWebpackPlugin }) => '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>' + htmlWebpackPlugin.options.title + '</title></head><body><div id=\"app\"></div></body></html>',
       filename: 'index.html',
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new ESLintPlugin({
+      context: './',
+      extensions: ['tsx', 'ts', 'js', 'jsx']
+    })
   ],
   optimization: {
     runtimeChunk: 'single',
