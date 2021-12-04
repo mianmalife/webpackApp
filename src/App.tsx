@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
+import Test from '../testComponent/testCmp';
 
 function App(props: any) {
   const [count, setCount] = React.useState(0);
@@ -16,6 +17,7 @@ function App(props: any) {
     >
       {name}
       {count}
+      <Test />
     </div>
   );
 }
