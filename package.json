@@ -14,7 +14,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,jsx,tsx,ts}": "eslint --fix"
+    "src/**/*.{js,jsx,tsx,ts}": "eslint --fix"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
