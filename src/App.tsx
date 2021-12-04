@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { hot } from 'react-hot-loader/root';
 import Test from '../testComponent/testCmp';
 
 function App(props: any) {
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
   const { name } = props;
   const handleClick = () => {
     setCount(count + 1);

@@ -92,7 +92,7 @@ const config = {
     }),
     new MiniCssExtractPlugin(),
     new ESLintPlugin({
-      context: './',
+      context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
     })
   ],
