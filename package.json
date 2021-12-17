@@ -1,10 +1,10 @@
 {
-  "name": "webpack5-project",
+  "name": "webpack5-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Empty project.",
   "main": "index.js",
   "keywords": [],
-  "author": "",
+  "author": "zhangkx",
   "license": "ISC",
   "scripts": {
     "clean": "rm dist/bundle.js",
@@ -60,5 +60,13 @@
     "last 2 version",
     "> 1%",
     "IE 11"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mianmalife/webpack5-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mianmalife/webpack5-app/issues"
+  },
+  "homepage": "https://github.com/mianmalife/webpack5-app#readme"
 }
