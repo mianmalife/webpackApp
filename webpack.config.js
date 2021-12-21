@@ -81,6 +81,9 @@ const config = {
   },
   devServer: {
     port: 9002,
+    client: {
+      progress: true,
+    },
     static: {
       directory: path.resolve(__dirname, 'dist')
     }
@@ -113,7 +116,7 @@ const config = {
 module.exports = (env, argv) => {
   if (argv.hot) {
     // Cannot use 'contenthash' when hot reloading is enabled.
-    config.output.filename = '[name].[hash].js';
+    config.output.filename = '[name].[fullhash].js';
   }
 
   return config;
