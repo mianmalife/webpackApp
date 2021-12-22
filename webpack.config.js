@@ -53,7 +53,19 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'less-loader'
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                modifyVars: {
+                  'primary-color': '#1DA57A',
+                  'link-color': '#1DA57A',
+                  'border-radius-base': '2px',
+                },
+                javascriptEnabled: true
+              }
+            }
+          }
         ]
       },
       {
@@ -83,6 +95,7 @@ const config = {
     port: 9002,
     client: {
       progress: true,
+      reconnect: true,
     },
     static: {
       directory: path.resolve(__dirname, 'dist')
