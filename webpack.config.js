@@ -2,7 +2,8 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const env = process.env.NODE_ENV
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const ENV = process.env.NODE_ENV
 const OUT_PUT = {
   path: path.resolve(__dirname, 'dist'),
   filename: '[name].[contenthash].js',
@@ -14,7 +15,8 @@ const config = {
     'react-hot-loader/patch',
     './src/index.tsx'
   ],
-  output: env === 'development' ? OUT_PUT : Object.assign(OUT_PUT, { publicPath: './' }),
+  output: ENV === 'development' ? OUT_PUT : Object.assign(OUT_PUT, { publicPath: './' }),
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -110,7 +112,8 @@ const config = {
     new ESLintPlugin({
       context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
-    })
+    }),
+    // new BundleAnalyzerPlugin()
   ],
   optimization: {
     runtimeChunk: 'single',
@@ -129,8 +132,10 @@ const config = {
 module.exports = (env, argv) => {
   if (argv.hot) {
     // Cannot use 'contenthash' when hot reloading is enabled.
-    config.output.filename = '[name].[fullhash].js';
+    config.output.filename = '[name].[fullhash].js'
   }
-
-  return config;
-};
+  if (ENV === 'production') {
+    delete config.devtool
+  }
+  return config
+}
