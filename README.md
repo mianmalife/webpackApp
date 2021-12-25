@@ -1,31 +1,23 @@
 # webpack5-project
 
-Empty project.
-
 ## Building and running on localhost
 
 First install dependencies:
 
 ```sh
-npm install
+yarn
 ```
 
 To run in hot module reloading mode:
 
 ```sh
-npm start
+yarn start
 ```
 
 To create a production build:
 
 ```sh
-npm run build-prod
-```
-
-To create a development build:
-
-```sh
-npm run build-dev
+yarn build
 ```
 
 ## Running
