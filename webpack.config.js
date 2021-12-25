@@ -95,7 +95,7 @@ const config = {
     port: 9002,
     client: {
       progress: true,
-      reconnect: true,
+      reconnect: true
     },
     static: {
       directory: path.resolve(__dirname, 'dist')

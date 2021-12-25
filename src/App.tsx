@@ -1,21 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { hot } from 'react-hot-loader/root'
-import Test from '../testComponent/testCmp'
+import Test from '@/testComponent/testCmp'
 import UseReduce from '@/example/useReducer'
+import axios from '@/shared/axios'
+import { Button } from 'antd'
+// https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/api/getDetails
+// https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/getdetail
 
 function App (props: any) {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCount(count => count + 1)
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
+  const getDataTable = () => {
+    axios({
+      url: 'https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/api/getDetails',
+      method: 'GET',
+      params: { test: 1 }
+    })
+  }
+  const getDataNo = () => {
+    axios({
+      url: 'https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/getdetail',
+      method: 'post',
+      params: { test: 1 }
+    }, {
+      repeat_request_cancel: false
+    })
+  }
   return (
     <div>
-      <h1>{count}</h1>
       <Test />
       <UseReduce initialCount={0}/>
+      <p>--------------------------</p>
+      <Button onClick={() => getDataTable()}>发射1号</Button>
+      <p>-----------------------</p>
+      <Button onClick={() => getDataNo()}>发射2号</Button>
     </div>
   )
 }
