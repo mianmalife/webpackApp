@@ -14,7 +14,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,tsx,ts}": "eslint --ignore-path src/shared/http.js --fix"
+    "src/**/*.{js,jsx,tsx,ts}": "eslint --fix"
   },
   "dependencies": {
     "antd": "^4.17.4",
