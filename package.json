@@ -1,6 +1,6 @@
 {
   "name": "webpack5-app",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "webpack5 app.",
   "main": "index.js",
   "keywords": [
