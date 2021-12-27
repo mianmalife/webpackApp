@@ -2,6 +2,9 @@ import React from 'react'
 import { hot } from 'react-hot-loader/root'
 import Test from '@/testComponent/testCmp'
 import UseReduce from '@/example/useReducer'
+import CounterTest from '@/example/useState'
+import CounterClass from '@/example/classState'
+import UseList from '@/example/useEffect'
 import axios from '@/shared/axios'
 import { Button } from 'antd'
 // https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/api/getDetails
@@ -32,6 +35,10 @@ function App (props: any) {
       <Button onClick={() => getDataTable()}>发射1号</Button>
       <p>-----------------------</p>
       <Button onClick={() => getDataNo()}>发射2号</Button>
+      <p>-------------------------------</p>
+      <CounterTest />
+      <CounterClass />
+      <UseList />
     </div>
   )
 }
