@@ -1,4 +1,4 @@
-# webpack5-project
+# Single page project based on Webpack5, React17, Antd4.x, Less, Sass
 
 ## Building and running on localhost
 
