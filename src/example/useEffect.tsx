@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import fetchApi from '@/shared/axios'
 export default function getDataCmp () {
   const [list, setList] = useState([])
-
   useEffect(() => {
     async function getData () {
       try {
