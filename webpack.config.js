@@ -96,7 +96,6 @@ const config = {
   devServer: {
     port: 9002,
     client: {
-      progress: true,
       reconnect: true
     },
     static: {

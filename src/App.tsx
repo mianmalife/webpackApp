@@ -1,48 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { hot } from 'react-hot-loader/root'
-import Test from '@/testComponent/testCmp'
-import UseReduce from '@/example/useReducer'
-import CounterTest from '@/example/useState'
-import CounterClass from '@/example/classState'
-import UseList from '@/example/useEffect'
-import CounterReducer from '@/example/counterReducer'
 import UseEffectM from '@/example/useEffectM'
-import axios from '@/shared/axios'
-import { Button } from 'antd'
 
 function App (props: any) {
-  const [step, setStep] = useState(1)
-  const getDataTable = () => {
-    axios({
-      url: 'https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/api/getDetails',
-      method: 'GET',
-      params: { test: 1 }
-    })
-  }
-  const getDataNo = () => {
-    axios({
-      url: 'https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/getdetail',
-      method: 'post',
-      params: { test: 1 }
-    }, {
-      repeat_request_cancel: false
-    })
-  }
   return (
     <div>
-      <Test />
-      <UseReduce initialCount={0}/>
-      <p>--------------------------</p>
-      <Button onClick={() => getDataTable()}>发射1号</Button>
-      <p>-----------------------</p>
-      <Button onClick={() => getDataNo()}>发射2号</Button>
-      <p>-------------------------------</p>
-      <CounterTest />
-      <CounterClass />
-      <UseList />
-      <CounterReducer step={step}/>
-      <input type="number" value={step} onChange={(e) => setStep(Number(e.target.value))}/>
-      <p>-------------------------</p>
       <UseEffectM />
     </div>
   )

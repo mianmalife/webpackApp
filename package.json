@@ -10,7 +10,7 @@
   "license": "ISC",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --mode production",
-    "start": "cross-env NODE_ENV=development webpack serve  --hot --mode development",
+    "start": "cross-env NODE_ENV=development webpack serve  --progress --hot --mode development",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "antd": "^4.17.4",
     "axios": "^0.24.0",
+    "core-js": "3",
     "cross-env": "^7.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
