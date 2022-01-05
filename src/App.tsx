@@ -9,8 +9,6 @@ import CounterReducer from '@/example/counterReducer'
 import UseEffectM from '@/example/useEffectM'
 import axios from '@/shared/axios'
 import { Button } from 'antd'
-// https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/api/getDetails
-// https://www.fastmock.site/mock/1be825ab4ec5090ee9bbd467d7bc5694/apis/getdetail
 
 function App (props: any) {
   const [step, setStep] = useState(1)
