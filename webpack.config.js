@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
@@ -12,8 +13,7 @@ const OUT_PUT = {
 }
 const config = {
   entry: [
-    'react-hot-loader/patch',
-    './src/index.tsx'
+    './src/index.jsx'
   ],
   output: ENV === 'development' ? OUT_PUT : Object.assign(OUT_PUT, { publicPath: './' }),
   devtool: 'source-map',
@@ -21,7 +21,12 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [ENV === 'development' && require.resolve('react-refresh/babel')].filter(Boolean)
+          }
+        },
         exclude: /node_modules/
       },
       {
@@ -89,12 +94,12 @@ const config = {
       '.ts'
     ],
     alias: {
-      'react-dom': '@hot-loader/react-dom',
       '@': path.resolve(__dirname, 'src')
     }
   },
   devServer: {
     port: 9002,
+    hot: true,
     client: {
       reconnect: true
     },
@@ -112,8 +117,9 @@ const config = {
       context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
     }),
+    ENV === 'development' && new ReactRefreshWebpackPlugin()
     // new BundleAnalyzerPlugin()
-  ],
+  ].filter(Boolean),
   optimization: {
     runtimeChunk: 'single',
     splitChunks: {
@@ -129,10 +135,6 @@ const config = {
 };
 
 module.exports = (env, argv) => {
-  if (argv.hot) {
-    // Cannot use 'contenthash' when hot reloading is enabled.
-    config.output.filename = '[name].[fullhash].js'
-  }
   if (ENV === 'production') {
     delete config.devtool
   }
