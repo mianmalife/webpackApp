@@ -1,3 +1,7 @@
+.routes__container {
+  padding-top: 20px;
+}
+
 #app {
   padding: 20px;
 }
