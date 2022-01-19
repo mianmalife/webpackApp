@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { Menu } from 'antd'
 import UseEffectM from '@/example/useEffectM'
-import Picture from '@/example/Picture'
+import Picture from '@/example/picture'
 import NotFound from '@/example/notFound'
 import './App.less'
 
