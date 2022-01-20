@@ -1,10 +1,25 @@
 import React from 'react'
-import { List, Avatar } from 'antd'
-import { Link } from 'react-router-dom'
+import { List, Avatar, Input } from 'antd'
+import { Link, useSearchParams } from 'react-router-dom'
 
-const Users = ({ userData }) => {
+const Users = ({ userData, searchUser }) => {
+  const [searchParmas, setSearchParams] = useSearchParams()
+  const searchTerm = searchParmas.get('name') || ''
+  console.log(searchTerm)
+  const onPressCallback = e => {
+    const name = e.target.value
+    if (name) {
+      setSearchParams({ name: e.target.value })
+    } else {
+      setSearchParams({})
+    }
+    searchUser(name)
+  }
   return (
     <div>
+      <p style={{ width: 500 }}>
+        <Input placeholder="search user" onPressEnter={onPressCallback} />
+      </p>
       <List
         itemLayout="horizontal"
         dataSource={userData}

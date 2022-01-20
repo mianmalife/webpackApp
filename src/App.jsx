@@ -35,14 +35,25 @@ function App () {
   const navgateTo = useNavigate()
   useEffect(() => {
     const { pathname } = location
-    setCurrent({ activeMenu: pathname.replace('/', '') })
+    if (pathname === '/') {
+      setCurrent({ activeMenu: 'home' })
+    } else {
+      setCurrent({ activeMenu: pathname.replace('/', '') })
+    }
   }, [location])
   const clickNav = e => {
     setCurrent({ activeMenu: e.key })
   }
   const onRemoveUser = (nowId) => {
-    setUser(state => state.filter(item => item.id !== nowId))
+    setUser(state => data.filter(item => item.id !== nowId))
     navgateTo('/users')
+  }
+  const searchUser = name => {
+    if (name) {
+      setUser(state => data.filter(item => item.name.includes(name)))
+    } else {
+      setUser(data)
+    }
   }
   return (
     <div>
@@ -60,17 +71,21 @@ function App () {
         <Menu.Item key="users">
           <Link to='/users'>USER</Link>
         </Menu.Item>
+        <Menu.Item key="search">
+          <Link to='/search'>SEARCH</Link>
+        </Menu.Item>
       </Menu>
       <div className='routes__container'>
         <Routes>
           <Route element={<Layouts />} >
+            <Route index element={<UseEffectM />} />
+            <Route path='/' element={<UseEffectM />} />
             <Route path='home' element={<UseEffectM />}>
               <Route path='helloOutlet' element={<HelloWorld />} />
             </Route>
           </Route>
           <Route path='picture' element={<Picture />} />
-          <Route path='users' element={<Users userData={user} />}>
-          </Route>
+          <Route path='users' element={<Users userData={user} searchUser={searchUser} />} />
           <Route
             path='users/:userId'
             element={<UserDetail onRemoveUser={onRemoveUser} userData={user} />} />
