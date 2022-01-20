@@ -45,7 +45,7 @@ function App () {
     setCurrent({ activeMenu: e.key })
   }
   const onRemoveUser = (nowId) => {
-    setUser(state => data.filter(item => item.id !== nowId))
+    setUser(state => state.filter(item => item.id !== nowId))
     navgateTo('/users')
   }
   const searchUser = name => {
