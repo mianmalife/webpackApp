@@ -1,3 +1,6 @@
+.routes__container {
+  user-select: none;
+}
 .routes__container .container {
   padding-top: 20px;
 }
@@ -28,6 +31,43 @@
   margin-top: 22px !important;
   height: 32px;
   line-height: 32px;
+}
+.routes__container .container__drag {
+  display: flex;
+}
+.routes__container .container__drag .left__demension {
+  padding: 10px;
+  background-color: cadetblue;
+  width: 300px;
+  height: 800px;
+}
+.routes__container .container__drag .left__demension .category ul li.demesion__lis {
+  height: 32px;
+  line-height: 32px;
+  background-color: pink;
+  margin-bottom: 10px;
+}
+.routes__container .container__drag .right__condition {
+  padding: 10px;
+  width: 300px;
+  margin-left: 20px;
+  background-color: azure;
+}
+.routes__container .container__drag .right__condition .category .drop__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 64px;
+  border: 1px dashed #ccc;
+}
+.routes__container .container__drag .right__condition .category .drop__content li {
+  height: 32px;
+  line-height: 32px;
+  background-color: pink;
+  margin-top: 10px;
+}
+.routes__container .container__drag .right__condition .category .drop__content p.empty__state {
+  text-align: center;
+  line-height: 64px;
 }
 
 #app {
