@@ -8,7 +8,8 @@ import HelloWorld from '@/example/helloworld'
 import Users from '@/example/user'
 import UserDetail from '@/example/userDetail'
 import { AuthProvider, RequireAuth } from '@/example/authProvider'
-import Login from '@/example/login'
+// import Login from '@/example/login'
+import DragTest from './example/dragTest'
 import './App.less'
 const data = [
   {
@@ -65,7 +66,7 @@ function App () {
               element={<UserDetail onRemoveUser={onRemoveUser} userData={user} />} />
             <Route path='*' element={<NotFound />} />
           </Route>
-          <Route path='login' element={<Login />} />
+          <Route path='login' element={<DragTest />} />
         </Routes>
       </div>
     </AuthProvider>
