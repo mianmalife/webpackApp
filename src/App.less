@@ -41,9 +41,24 @@
       .category {
         ul {
           li.demesion__lis {
+            display: flex;
             height: 32px;
             line-height: 32px;
             background-color: pink;
+            margin-bottom: 10px;
+            font-size: 16px;
+            mark {
+              cursor: pointer;
+            }
+          }
+          .child__content {
+            overflow: hidden;
+          }
+          li.child__lis {
+            padding-left: 10px;
+            height: 32px;
+            line-height: 32px;
+            background-color: rgb(173, 228, 228);
             margin-bottom: 10px;
           }
         }
@@ -59,14 +74,19 @@
           display: flex;
           flex-direction: column;
           min-height: 64px;
-          border: 1px dashed #ccc;
           li {
+            display: flex;
+            justify-content: space-between;
             height: 32px;
             line-height: 32px;
             background-color: pink;
             margin-top: 10px;
+            mark {
+              cursor: pointer;
+            }
           }
           p.empty__state {
+            border: 1px dashed #ccc;
             text-align: center;
             line-height: 64px;
           }
