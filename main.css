@@ -42,9 +42,24 @@
   height: 800px;
 }
 .routes__container .container__drag .left__demension .category ul li.demesion__lis {
+  display: flex;
   height: 32px;
   line-height: 32px;
   background-color: pink;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.routes__container .container__drag .left__demension .category ul li.demesion__lis mark {
+  cursor: pointer;
+}
+.routes__container .container__drag .left__demension .category ul .child__content {
+  overflow: hidden;
+}
+.routes__container .container__drag .left__demension .category ul li.child__lis {
+  padding-left: 10px;
+  height: 32px;
+  line-height: 32px;
+  background-color: #ade4e4;
   margin-bottom: 10px;
 }
 .routes__container .container__drag .right__condition {
@@ -57,15 +72,20 @@
   display: flex;
   flex-direction: column;
   min-height: 64px;
-  border: 1px dashed #ccc;
 }
 .routes__container .container__drag .right__condition .category .drop__content li {
+  display: flex;
+  justify-content: space-between;
   height: 32px;
   line-height: 32px;
   background-color: pink;
   margin-top: 10px;
 }
+.routes__container .container__drag .right__condition .category .drop__content li mark {
+  cursor: pointer;
+}
 .routes__container .container__drag .right__condition .category .drop__content p.empty__state {
+  border: 1px dashed #ccc;
   text-align: center;
   line-height: 64px;
 }
