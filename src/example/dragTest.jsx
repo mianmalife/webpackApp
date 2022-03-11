@@ -62,7 +62,6 @@ const selected = {
 function DragTest () {
   const [quota, setQuota] = useState(demension)
   const [indicator, setIndicator] = useState(selected)
-  // const [activeId, setActiveId] = useState(null)
   const empty = useRef(null)
   const onDragStart = (draggedId, name, category, e) => {
     console.log(e, 'onDragStart')
