@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
 import { Input, Spin, Button } from 'antd'
-import useDataApi from './useDataApi'
+import useDataApi from '../../example/useDataApi'
 function Child ({ data, loading, Error }) {
   return <div>
     <Spin tip='加载中...' spinning={loading}>
@@ -24,8 +23,6 @@ function GetNewsData () {
   // }, [url])
 
   return <div>
-    <p><Link to='helloOutlet'>Show Hello Outlet</Link></p>
-    <Outlet />
     <Input
       value={query}
       style={{ width: 240 }}

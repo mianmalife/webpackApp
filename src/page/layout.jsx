@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Menu } from 'antd'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { AuthStatus } from '@/example/authProvider'
 const Layout = () => {
   const [current, setCurrent] = useState({ activeMenu: 'home' })
   const location = useLocation()
@@ -21,22 +20,15 @@ const Layout = () => {
       <Menu
         onClick={clickNav}
         selectedKeys={[current.activeMenu]}
-        theme='light'
+        theme={new Date().getHours() > 18 ? 'dark' : 'light'}
         mode="horizontal">
         <Menu.Item key="home">
-          <Link to='/home'>HOME</Link>
+          <Link to='/home'>React</Link>
         </Menu.Item>
         <Menu.Item key="picture">
-          <Link to='/picture'>PICTURE</Link>
-        </Menu.Item>
-        <Menu.Item key="users">
-          <Link to='/users'>USER</Link>
-        </Menu.Item>
-        <Menu.Item key="search">
-          <Link to='/search'>SEARCH</Link>
+          <Link to='/picture'>CSS</Link>
         </Menu.Item>
       </Menu>
-      <AuthStatus />
       <div className='container'>
         <Outlet />
       </div>
