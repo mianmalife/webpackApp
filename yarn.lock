@@ -4223,6 +4223,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lu2@^2021.12.21:
+  version "2021.12.21"
+  resolved "https://registry.npmmirror.com/lu2/-/lu2-2021.12.21.tgz#68647ef414db332cea9707bafa99b216f89426d0"
+  integrity sha512-+Z0qeYS8aQHNAskpj3Xt72AHQgqfpjSmDJnWLIJZk6I6QjV5y8omjtdkU7bFwj0jX9UlC5s6ezEBh1L8TOo8Jw==
+
 make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/make-dir/download/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
