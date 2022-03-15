@@ -11,6 +11,18 @@
 :not(.ui-button):not(h2):not([is="ui-button"]) {
     color: #5468ff;
 }
+.tree__wrapperd {
+  width: 300px;
+}
+.tree__wrapperd .indicator__wrapperd {
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+.tree__wrapperd .indicator__wrapperd .name {
+  border: 1px solid #ccc;
+  margin-bottom: 10px !important;
+}
+
 .routes__container {
   user-select: none;
 }
