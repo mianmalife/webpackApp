@@ -12,15 +12,19 @@ function Tree() {
       })
   }, [])
   function expand (id, category) {
-    console.log(id, category, 'expand', data)
     const copy = _cloneDeep(data)
-    const resp = copy[category].map(item => {
-      if (item.id === id) {
-        item.fold = !item.fold
-      }
-      return item
-    })
-    copy[category] = resp
+    const resp = (arr) => {
+      return arr.map(item => {
+        if (item.id === id) {
+          item.fold = !item.fold
+        }
+        if (item.children) {
+          resp(item.children)
+        }
+        return item
+      })
+    }
+    copy[category] = resp(copy[category])
     setData(copy)
   }
   function onHandle(obj, depth) {
@@ -30,7 +34,7 @@ function Tree() {
         return <li key={item.id} className='indicator__wrapperd'>
           <p className='name' onClick={item.children && expand.bind(this, item.id, key)}>{item.name}</p>
           {
-            item.children && <ul style={{ paddingLeft: nextDepth, height: item.fold ? 0 : 'auto' }}>{generateChild(item.children, nextDepth, key)}</ul>
+            item.children && <ul style={{ overflow: 'hidden', paddingLeft: nextDepth, height: item.fold ? 0 : 'auto' }}>{generateChild(item.children, nextDepth, key)}</ul>
           }
         </li>
       })
@@ -55,7 +59,10 @@ function Tree() {
     })
   }
   return <Fragment>
-    <div className='tree__wrapperd'>{data && onHandle(data, 0)}</div>
+    <div className='tree__wrapperd'>
+      <h2>React递归实现树结构</h2>
+      {data && onHandle(data, 0)}
+    </div>
   </Fragment>
 }
 

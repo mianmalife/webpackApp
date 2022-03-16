@@ -26,6 +26,7 @@
         {
           "id": "1-5",
           "name": "季度",
+          "fold": false,
           "children": [
             {
               "id": "1-5-1",
