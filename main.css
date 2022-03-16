@@ -12,15 +12,20 @@
     color: #5468ff;
 }
 .tree__wrapperd {
-  width: 300px;
+  padding: 20px;
+  width: 320px;
+  border: 1px solid #5468ff;
+}
+.tree__wrapperd .name {
+  cursor: pointer !important;
 }
 .tree__wrapperd .indicator__wrapperd {
   line-height: 32px;
-  margin-bottom: 10px;
 }
 .tree__wrapperd .indicator__wrapperd .name {
   border: 1px solid #ccc;
   margin-bottom: 10px !important;
+  cursor: pointer !important;
 }
 
 .routes__container {
