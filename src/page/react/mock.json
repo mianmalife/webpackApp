@@ -3,7 +3,6 @@
     {
       "id": 1,
       "name": "日期",
-      "fold": false,
       "bgColor": "rgba(58, 161, 255, 0.1)",
       "color": "#3AA1FF",
       "children": [
@@ -26,25 +25,42 @@
         {
           "id": "1-5",
           "name": "季度",
-          "fold": false,
           "children": [
             {
               "id": "1-5-1",
               "name": "季度1",
-              "fold": false,
               "children": [
                 {
                   "id": "1-5-1-1",
                   "name": "季度1-1",
-                  "fold": false,
                   "children": [
                     {
                       "id": "1-5-1-1-1",
-                      "name": "季度1-1-1"
+                      "name": "季度1-1-1",
+                      "children": [
+                        {
+                          "id": "1-5-1-1-1-1",
+                          "name": "季度1-1-1-1testetstetstestetste1testetstetstestetste"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "1-5-1-1-2",
+                      "name": "季度1-1-2",
+                      "children": [
+                        {
+                          "id": "1-5-1-1-1-2",
+                          "name": "季度1-1-1-2"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
+            },
+            {
+              "id": "1-5-2",
+              "name": "季度2"
             }
           ]
         },
@@ -61,7 +77,6 @@
     {
       "id": 2,
       "name": "店外场所",
-      "fold": false,
       "bgColor": "rgba(58, 161, 255, 0.1)",
       "color": "#3AA1FF",
       "children": [
@@ -123,7 +138,6 @@
     {
       "id": 4,
       "name": "其他",
-      "fold": false,
       "bgColor": "rgba(58, 161, 255, 0.1)",
       "color": "#3AA1FF",
       "children": [
@@ -150,13 +164,20 @@
     {
       "id": 5,
       "name": "门店基础指标",
-      "fold": false,
       "bgColor": "rgba(248, 181, 81, 0.1)",
       "color": "#F8B551",
       "children": [
         {
           "id": "5-1",
-          "name": "进店客流"
+          "name": "进店客流",
+          "children": [{
+          "id": "5-2",
+          "name": "进店客流2",
+            "children": [{
+            "id": "5-3",
+            "name": "进店客流3"
+            }]
+          }]
         },
         {
           "id": "5-2",
@@ -171,7 +192,6 @@
     {
       "id": 6,
       "name": "门店组合指标",
-      "fold": false,
       "bgColor": "rgba(248, 181, 81, 0.1)",
       "color": "#F8B551",
       "children": [

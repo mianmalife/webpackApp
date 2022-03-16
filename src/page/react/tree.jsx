@@ -16,6 +16,7 @@ function Tree() {
     const resp = (arr) => {
       return arr.map(item => {
         if (item.id === id) {
+          console.log(item, id)
           item.fold = !item.fold
         }
         if (item.children) {
@@ -28,24 +29,81 @@ function Tree() {
     setData(copy)
   }
   function onHandle(obj, depth) {
-    function generateChild (seChild, dept, key) {
+    function generateChild(seChild, dept, key, bgColor, color) {
       const nextDepth = dept + 5
       return seChild.length && seChild.map(item => {
-        return <li key={item.id} className='indicator__wrapperd'>
-          <p className='name' onClick={item.children && expand.bind(this, item.id, key)}>{item.name}</p>
+        return <li key={item.id}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: 10,
+              backgroundColor: bgColor,
+              color: color,
+              cursor: item.children && 'pointer'
+            }}
+            key={item.id}
+            data-id={item.id}
+            onClick={item.children && expand.bind(this, item.id, key)}>
+            {item.children &&
+              <span style={{
+                marginLeft: nextDepth,
+                display: 'inline-block',
+                width: '24px',
+                height: '24px'
+              }}>
+              </span>}
+            <div
+              className='indicator__name'
+              style={{
+                textIndent: !item.children && nextDepth,
+                padding: !item.children && '0 24px'
+              }}
+              title={item.name}>{item.name}
+            </div>
+          </div>
           {
-            item.children && <ul style={{ overflow: 'hidden', paddingLeft: nextDepth, height: item.fold ? 0 : 'auto' }}>{generateChild(item.children, nextDepth, key)}</ul>
+            item.children &&
+            <ul style={{ display: item.fold ? 'none' : 'block' }}>
+              {generateChild(item.children, nextDepth, key, bgColor, color)}
+            </ul>
           }
         </li>
       })
     }
-    function generate (firstChild, dept, key) {
+    function generate(firstChild, dept, key) {
       const nextDepth = dept + 5
       return firstChild.length && firstChild.map(item => {
         return <li key={item.id}>
-          <p className='name' onClick={item.children && expand.bind(this, item.id, key)}>{item.name}</p>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: 10,
+              backgroundColor: item.bgColor,
+              color: item.color,
+              cursor: item.children && 'pointer'
+            }}
+            key={item.id}
+            data-id={item.id}
+            onClick={item.children && expand.bind(this, item.id, key)}>
+            {item.children &&
+              <span
+                style={{
+                  display: 'inline-block',
+                  width: '24px',
+                  height: '24px'
+                }}>
+              </span>}
+            <div className='indicator__name'
+              style={{ padding: !item.children && '0 24px' }}
+              title={item.name}>{item.name}</div>
+          </div>
           {
-            item.children && <ul style={{ overflow: 'hidden', paddingLeft: nextDepth, height: item.fold ? 0 : 'auto' }}>{generateChild(item.children, nextDepth, key)}</ul>
+            item.children &&
+            <ul style={{ display: item.fold ? 'none' : 'block' }}>
+              {generateChild(item.children, nextDepth, key, item.bgColor, item.color)}
+            </ul>
           }
         </li>
       })
@@ -53,15 +111,17 @@ function Tree() {
     return Object.keys(obj).map(key => {
       const nextDepth = depth + 5
       return <div key={key}>
-        <h2>{key}</h2>
+        <div>{key}</div>
         <ul>{obj[key].length && generate(obj[key], nextDepth, key)}</ul>
       </div>
     })
   }
   return <Fragment>
-    <div className='tree__wrapperd'>
-      <h2>React递归实现树结构</h2>
-      {data && onHandle(data, 0)}
+    <div className='tree__scroll__box'>
+      <div className='tree__wrapperd'>
+        <h2>React递归实现树结构</h2>
+        {data && onHandle(data, 0)}
+      </div>
     </div>
   </Fragment>
 }

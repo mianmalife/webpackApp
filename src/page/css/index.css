@@ -7,7 +7,7 @@
 }
 /**
 类名不是ui-button的元素
-**/
+**/ 
 :not(.ui-button):not(h2):not([is="ui-button"]) {
     color: #5468ff;
 }
