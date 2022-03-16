@@ -7,17 +7,30 @@
 }
 /**
 类名不是ui-button的元素
-**/
+**/ 
 :not(.ui-button):not(h2):not([is="ui-button"]) {
     color: #5468ff;
 }
-.tree__wrapperd {
-  padding: 20px;
-  width: 320px;
+
+.tree__scroll__box {
+  width: 300px;
+  height: 600px;
+  position: relative;
+  padding: 20px 0 20px 20px;
   border: 1px solid #5468ff;
+  overflow: auto;
 }
-.tree__wrapperd .name {
+.tree__wrapperd {
+  min-width: 280px;
+  padding-right: 20px;
+  position: absolute;
+  left: 20px;
+}
+.tree__wrapperd .indicator__name {
   cursor: pointer !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .tree__wrapperd .indicator__wrapperd {
   line-height: 32px;
