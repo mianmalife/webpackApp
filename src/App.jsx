@@ -15,7 +15,7 @@ function App () {
             <Route index element={<Tree />} />
             <Route path='/' element={<Tree />} />
             <Route path='home' element={<Tree />}></Route>
-            <Route path='picture' element={<CssComponent />} />
+            <Route path='css' element={<CssComponent />} />
             <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>

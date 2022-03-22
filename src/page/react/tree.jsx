@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from 'react'
 import fetchApi from '@/shared/axios'
 import _cloneDeep from 'lodash/cloneDeep'
 import './tree.less'
-
 function Tree() {
   const [data, setData] = useState(null)
   useEffect(() => {
