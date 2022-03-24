@@ -4,6 +4,7 @@ import Layouts from '@/page/layout'
 import CssComponent from '@/page/css/CssComponent'
 import Tree from '@/page/react/tree'
 import NotFound from '@/example/notFound'
+import LessComponent from '@/page/less/index'
 
 import './App.less'
 
@@ -16,6 +17,7 @@ function App () {
             <Route path='/' element={<Tree />} />
             <Route path='home' element={<Tree />}></Route>
             <Route path='css' element={<CssComponent />} />
+            <Route path='less' element={<LessComponent />} />
             <Route path='*' element={<NotFound />} />
           </Route>
         </Routes>

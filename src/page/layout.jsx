@@ -26,6 +26,9 @@ const Layout = () => {
         <Menu.Item key="css">
           <Link to='/css'>CSS</Link>
         </Menu.Item>
+        <Menu.Item key="less">
+          <Link to='/less'>LESS</Link>
+        </Menu.Item>
       </Menu>
       <div className='container'>
         <Outlet />
