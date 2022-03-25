@@ -1,15 +1,21 @@
 #csscomponent__wrapper .lulu__ui__wrapper {
-    padding: 20px;
-    border: 1px solid #ccc;
+  padding: 20px;
+  border: 1px solid #ccc;
+  /**
+    类名不是ui-button的元素
+    **/
 }
-#csscomponent__wrapper .lulu__ui__wrapper p {
-    margin-bottom: 10px;
+#csscomponent__wrapper .lulu__ui__wrapper :not(.ui-button):not(h2):not([is="ui-button"]) {
+  color: #5468ff;
 }
-/**
-类名不是ui-button的元素
-**/ 
-:not(.ui-button):not(h2):not([is="ui-button"]) {
-    color: #5468ff;
+#csscomponent__wrapper .lulu__ui__wrapper .rem__wrapper {
+  width: 26.66666667rem;
+  height: 26.66666667rem;
+  font-size: 32px;
+  background-color: #5468ff;
+}
+#csscomponent__wrapper .lulu__ui__wrapper .date__picker {
+  width: 26.66666667rem;
 }
 
 .tree__scroll__box {
@@ -39,6 +45,97 @@
   border: 1px solid #ccc;
   margin-bottom: 10px !important;
   cursor: pointer !important;
+}
+
+.less__component h2 {
+  width: 120px;
+  color: #333;
+  font-size: 18px;
+}
+.less__component .boolean .inner {
+  width: 400px;
+  height: 32px;
+  line-height: 32px;
+  transition: height 0.5s linear, width, 0.5s linear;
+  background-color: yellow;
+}
+.less__component .boolean:hover .inner {
+  width: 800px;
+  height: 64px;
+  line-height: 64px;
+}
+.less__component .each {
+  margin-top: 60px;
+  color: #fff;
+  background-color: #5468ff;
+}
+.less__component .each .child-red {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-orange {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-green {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-7 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-8 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-9 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .each .child-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #e49013;
+}
+.less__component .func {
+  width: 26.66666667rem;
 }
 
 .routes__container {
@@ -133,6 +230,12 @@
   line-height: 64px;
 }
 
+html {
+  font-size: 16px;
+}
+body {
+  font-size: 16px;
+}
 #app {
   padding: 20px;
 }
@@ -140,9 +243,5 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-#app p {
-  margin: 0;
-  padding: 0;
 }
 
