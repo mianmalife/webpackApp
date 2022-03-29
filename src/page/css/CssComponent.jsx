@@ -16,6 +16,12 @@ function CssComponent() {
       <p><button is='ui-button' type='primary'>is属性 lulu ui primary</button></p>
       <input type="date" is="ui-datetime" />
     </div>
+    <div className='loading__mask'>
+      <p>mask&animation的用法</p>
+      <p><button className='btn'></button></p>
+      <p><button className='btn-chi'></button></p>
+      <div className='smile'></div>
+    </div>
   </div>
 }
 

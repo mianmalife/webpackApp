@@ -21,8 +21,89 @@
     .date__picker {
         .px2rem(width, 200);
     }
+ }
+ .loading__mask {
+     padding: 20px;
+     height: 300px;
+     .btn {
+         position: relative;
+         width: 80px;
+         height: 32px;
+         border: 1px solid #ccc;
+         border-radius: 2px;
+         background-color: #fff;
+         &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            content: '';
+            margin: auto;
+            width: 40px;
+            height: 40px;
+            background-color: #5468ff;
+            background-repeat: no-repeat;
+            -webkit-mask-image: url('../../asset/image/loading.svg');
+            mask-image: url('../../asset/image/loading.svg');
+            -webkit-mask-size: 100%;
+            mask-size: 100%;
+            transform-origin: center;
+            animation: 1s linear infinite spins;
+         }
+     }
+     .btn-chi {
+         position: relative;
+         width: 80px;
+         height: 32px;
+         border: 1px solid #ccc;
+         border-radius: 2px;
+         background-color: #fff;
+         &::before {
+             position: absolute;
+             content: '';
+             top: 0;
+             right: 0;
+             bottom: 0;
+             left: 0;
+             margin: auto;
+             width: 40px;
+             height: 40px;
+             background-color: #5468ff;
+             background-repeat: no-repeat;
+             -webkit-mask-image: url('../../asset/image/setting.svg');
+             mask-image: url('../../asset/image//setting.svg');
+             -webkit-mask-size: 100%;
+             mask-size: 100%;
+             animation: 1s ease-in-out infinite spins;
+         }
+     }
+     .smile {
+         width: 120px;
+         height: 120px;
+         background: url(../../asset/image/smile.svg) no-repeat;
+         background-size: 100%;
+         background-position: center;
+         animation: 1s ease-out infinite rote;
+     }
  }   
 }
+@keyframes rote {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(2, 2);
+    }
+}
+@keyframes spins {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+ }
 
 // less 自定义函数
 // rem布局
