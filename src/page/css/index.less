@@ -2,6 +2,9 @@
 .px2rem(@name, @px) {
   @{name}: unit((@px / @ui-width * 100), rem);
 }
+.ui-dialog-footer {
+    box-sizing: content-box;
+}
 #csscomponent__wrapper {
     .lulu__ui__wrapper {
         padding: 20px;
@@ -86,7 +89,32 @@
          background-position: center;
          animation: 1s ease-out infinite rote;
      }
- }   
+ }
+ .custom__dialog {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: fixed;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+     background-color: rgba(25, 28, 34, 0.88);
+     opacity: 0;
+     transition: all .2s linear;
+     z-index: 1;
+     .panel {
+        min-width: 400px;
+        min-height: 300px;
+        background-color: #fff;
+        transition: all .1s linear;
+        border-radius: 2px;
+        font-size: 40px;
+     }
+ }
 }
 @keyframes rote {
     from {
@@ -104,6 +132,48 @@
         transform: rotate(360deg);
     }
  }
-
-// less 自定义函数
-// rem布局
+.dialog__wrapper {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    p {
+        margin-top: 10px;
+    }
+}
+ .css-dialog {
+     position: relative;
+     border: none;
+     border-radius: 2px;
+     .btn {
+         position: absolute;
+         right: 0px;
+         top: 0px;
+         text-align: center;
+         font-size: 0;
+         background: none;
+         border: none;
+         &::before {
+             content: '';
+             display: block;
+             width: 24px;
+             height: 24px;
+             background: url('../../asset/image/close.png') no-repeat;
+             background-size: 100%;
+             background-position: center;
+             z-index: 99;
+             cursor: pointer;
+         }
+     }
+ }
+.css-dialog::backdrop {
+    background-color: #19191a;
+    opacity: .2;
+}
+.custBtn {
+    width: 140px;
+    color: #5468ff;
+    transition: all 1s linear;
+    &:hover {
+        width: 160px;
+        color: #029c5c;
+    }
+}
