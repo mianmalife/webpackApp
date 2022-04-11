@@ -4,12 +4,16 @@ import _cloneDeep from 'lodash/cloneDeep'
 import './tree.less'
 function Tree() {
   const [data, setData] = useState(null)
+  const [a] = useState(COMMON_URL1)
+  const [b] = useState(COMMON_URL2)
+  const [c] = useState(COMMON_URL3)
   useEffect(() => {
-    fetchApi('https://www.fastmock.site/mock/9a0b75972e6f3de5f1aebeb764372e80/redux/api/dimension')
+    fetchApi(`${COMMON_URL}/mock/9a0b75972e6f3de5f1aebeb764372e80/redux/api/dimension`)
       .then(data => {
         setData(data)
       })
   }, [])
+  console.log(a, b, c)
   function expand (id, category) {
     const copy = _cloneDeep(data)
     const resp = (arr) => {
@@ -122,6 +126,9 @@ function Tree() {
         {data && onHandle(data, 0)}
       </div>
     </div>
+    <div>{a}</div>
+    <div>{b}</div>
+    <div>{c}</div>
   </Fragment>
 }
 

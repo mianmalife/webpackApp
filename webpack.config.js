@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin")
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
@@ -109,15 +110,19 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      templateContent: ({ htmlWebpackPlugin }) => '<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>' + htmlWebpackPlugin.options.title + '</title></head><body><div id=\"app\"></div></body></html>',
-      filename: 'index.html',
+      title: 'sunshine',
+      template: 'src/index.html',
+      inject: true
     }),
     new MiniCssExtractPlugin(),
     new ESLintPlugin({
       context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
     }),
-    ENV === 'development' && new ReactRefreshWebpackPlugin()
+    ENV === 'development' && new ReactRefreshWebpackPlugin(),
+    new CopyPlugin([
+      { from: './src/config.js', to: '' }
+    ])
     // new BundleAnalyzerPlugin()
   ].filter(Boolean),
   optimization: {
