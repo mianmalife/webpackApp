@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin')
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
   path: path.resolve(__dirname, 'dist'),
@@ -119,22 +120,19 @@ const config = {
       extensions: ['tsx', 'ts', 'js', 'jsx']
     }),
     ENV === 'development' && new ReactRefreshWebpackPlugin(),
-    new CopyPlugin([
-      { from: './src/config.js', to: '' }
-    ])
-    // new BundleAnalyzerPlugin()
+    new CopyPlugin({
+      patterns: [{
+        from: './src/config.js', to: ''
+      }]
+    })
   ].filter(Boolean),
   optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false
+      }),
+    ]
   }
 };
 
