@@ -19,7 +19,3 @@ To create a production build:
 ```sh
 yarn build
 ```
-
-## Running
-
-Open the file `dist/index.html` in your browser
