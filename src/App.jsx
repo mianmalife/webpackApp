@@ -1,9 +1,9 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Layouts from '@/page/layout'
+import Layouts from './layout'
 import CssComponent from '@/page/css/CssComponent'
 import Tree from '@/page/react/tree'
-import NotFound from '@/example/notFound'
+import NotFound from './notFound'
 import LessComponent from '@/page/less/index'
 
 import './App.less'

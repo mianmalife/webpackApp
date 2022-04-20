@@ -17,6 +17,7 @@
     "src/**/*.{js,jsx,tsx,ts}": "eslint --fix"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "antd": "^4.17.4",
     "axios": "^0.24.0",
     "clone-ele": "^1.0.3",
@@ -24,7 +25,6 @@
     "cross-env": "^7.0.3",
     "immer": "^9.0.12",
     "lodash": "^4.17.21",
-    "lu2": "^2021.12.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "6"
@@ -40,8 +40,8 @@
     "@typescript-eslint/parser": "^5.8.0",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.2",
-    "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.3.0",
+    "css-minimizer-webpack-plugin": "^3.4.1",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.3",

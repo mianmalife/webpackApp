@@ -1,9 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const CopyPlugin = require("copy-webpack-plugin")
 const TerserPlugin = require('terser-webpack-plugin')
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
@@ -119,18 +119,22 @@ const config = {
       context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
     }),
-    ENV === 'development' && new ReactRefreshWebpackPlugin(),
-    new CopyPlugin({
-      patterns: [{
-        from: './src/config.js', to: ''
-      }]
-    })
+    ENV === 'development' && new ReactRefreshWebpackPlugin()
   ].filter(Boolean),
   optimization: {
     minimize: true,
     minimizer: [
+      new CssMinimizerPlugin({
+        parallel: true
+      }),
       new TerserPlugin({
-        extractComments: false
+        terserOptions: {
+          format: {
+            comments: false // 删除注释
+          }
+        },
+        parallel: true,
+        extractComments: false // 不生成注释文件
       }),
     ]
   }
@@ -139,6 +143,8 @@ const config = {
 module.exports = (env, argv) => {
   if (ENV === 'production') {
     delete config.devtool
+  } else {
+    delete config.optimization
   }
   return config
 }

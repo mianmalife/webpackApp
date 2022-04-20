@@ -33,10 +33,6 @@
     "space-before-function-paren": "off"
   },
   "globals": {
-    "JSX": true,
-    "COMMON_URL": true,
-    "COMMON_URL1": true,
-    "COMMON_URL2": true,
-    "COMMON_URL3": true
+    "JSX": true
   }
 }

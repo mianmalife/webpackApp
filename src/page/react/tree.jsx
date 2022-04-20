@@ -1,20 +1,21 @@
 import React, { Fragment, useEffect, useState } from 'react'
+import { Card } from 'antd'
+import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons'
 import fetchApi from '@/shared/axios'
 import _cloneDeep from 'lodash/cloneDeep'
 import './tree.scss'
 function Tree() {
   const [data, setData] = useState(null)
-  const [a] = useState(COMMON_URL1)
-  const [b] = useState(COMMON_URL2)
-  const [c] = useState(COMMON_URL3)
   useEffect(() => {
-    fetchApi(`${COMMON_URL}/mock/9a0b75972e6f3de5f1aebeb764372e80/redux/api/dimension`)
+    fetchApi('https://www.fastmock.site/mock/9a0b75972e6f3de5f1aebeb764372e80/redux/api/dimension')
       .then(data => {
         setData(data)
       })
+      .catch(() => {
+        setData(null)
+      })
   }, [])
-  console.log(a, b, c)
-  function expand (id, category) {
+  function expand(id, category) {
     const copy = _cloneDeep(data)
     const resp = (arr) => {
       return arr.map(item => {
@@ -52,7 +53,7 @@ function Tree() {
               <span style={{
                 marginLeft: nextDepth,
                 display: 'inline-block',
-                width: '24px',
+                width: '10px',
                 height: '24px'
               }}>
               </span>}
@@ -62,7 +63,8 @@ function Tree() {
                 textIndent: !item.children && nextDepth,
                 padding: !item.children && '0 24px'
               }}
-              title={item.name}>{item.name}
+              title={item.name}>
+              {!item.fold ? item.children && <CaretDownOutlined /> : item.children && <CaretRightOutlined />}{item.name}
             </div>
           </div>
           {
@@ -94,13 +96,13 @@ function Tree() {
               <span
                 style={{
                   display: 'inline-block',
-                  width: '24px',
+                  width: '10px',
                   height: '24px'
                 }}>
               </span>}
             <div className='indicator__name'
               style={{ padding: !item.children && '0 24px' }}
-              title={item.name}>{item.name}</div>
+              title={item.name}>{!item.fold ? <CaretDownOutlined /> : <CaretRightOutlined />}{item.name}</div>
           </div>
           {
             item.children &&
@@ -120,15 +122,9 @@ function Tree() {
     })
   }
   return <Fragment>
-    <div className='tree__scroll__box'>
-      <div className='tree__wrapperd'>
-        <h2>React递归实现树结构</h2>
-        {data && onHandle(data, 0)}
-      </div>
-    </div>
-    <div>{a}</div>
-    <div>{b}</div>
-    <div>{c}</div>
+    <Card title="React递归实现树结构" className='tree__wrapperd' style={{ height: 300, overflow: 'auto' }}>
+      {data ? onHandle(data, 0) : '暂无数据'}
+    </Card>
   </Fragment>
 }
 
