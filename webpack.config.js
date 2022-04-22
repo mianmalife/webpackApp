@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin")
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
   path: path.resolve(__dirname, 'dist'),
@@ -119,7 +120,15 @@ const config = {
       context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
     }),
-    ENV === 'development' && new ReactRefreshWebpackPlugin()
+    ENV === 'development' && new ReactRefreshWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src/config.js',
+          info: { minimized: true }
+        }
+      ]
+    })
   ].filter(Boolean),
   optimization: {
     minimize: true,

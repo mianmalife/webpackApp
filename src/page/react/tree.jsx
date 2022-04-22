@@ -3,11 +3,12 @@ import { Card } from 'antd'
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons'
 import fetchApi from '@/shared/axios'
 import _cloneDeep from 'lodash/cloneDeep'
+import { baseUrl } from '@/config'
 import './tree.scss'
 function Tree() {
   const [data, setData] = useState(null)
   useEffect(() => {
-    fetchApi('https://www.fastmock.site/mock/9a0b75972e6f3de5f1aebeb764372e80/redux/api/dimension')
+    fetchApi(`${baseUrl}/mock/9a0b75972e6f3de5f1aebeb764372e80/redux/api/dimension`)
       .then(data => {
         setData(data)
       })
