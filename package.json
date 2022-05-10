@@ -11,14 +11,16 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --mode production",
     "start": "cross-env NODE_ENV=development webpack serve --progress --mode development",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preinstall": "node ./scripts/preinstall.js"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,tsx,ts}": "eslint --fix"
   },
+  "foreground-scripts": "true",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "antd": "^4.17.4",
+    "antd": "^4.20.3",
     "axios": "^0.24.0",
     "clone-ele": "^1.0.3",
     "core-js": "3",

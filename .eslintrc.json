@@ -30,7 +30,11 @@
       "error"
     ],
     "react/prop-types": "off",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "eol-last": "off",
+    "semi": "off",
+    "react/react-in-jsx-scope": "off",
+    "multiline-ternary": "off"
   },
   "globals": {
     "JSX": true

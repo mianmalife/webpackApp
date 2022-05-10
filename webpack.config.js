@@ -104,6 +104,10 @@ const config = {
     hot: true,
     client: {
       reconnect: true
+      // overlay: {
+      //   errors: true,
+      //   warnings: false
+      // }
     },
     static: {
       directory: path.resolve(__dirname, 'dist')
