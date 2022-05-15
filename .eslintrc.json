@@ -37,6 +37,7 @@
     "multiline-ternary": "off"
   },
   "globals": {
-    "JSX": true
+    "JSX": true,
+    "baseUrl": true
   }
 }

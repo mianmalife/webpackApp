@@ -3,7 +3,6 @@ import { Card } from 'antd'
 import { CaretRightOutlined, CaretDownOutlined } from '@ant-design/icons'
 import fetchApi from '@/shared/axios'
 import _cloneDeep from 'lodash/cloneDeep'
-import { baseUrl } from '@/config'
 import './tree.scss'
 function Tree() {
   const [data, setData] = useState(null)
