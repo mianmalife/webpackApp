@@ -6,6 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin")
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
   path: path.resolve(__dirname, 'dist'),
@@ -103,11 +104,11 @@ const config = {
     port: 9002,
     hot: true,
     client: {
-      reconnect: true
-      // overlay: {
-      //   errors: true,
-      //   warnings: false
-      // }
+      reconnect: true,
+      overlay: {
+        errors: true,
+        warnings: false
+      }
     },
     static: {
       directory: path.resolve(__dirname, 'dist')
@@ -119,6 +120,7 @@ const config = {
       template: 'src/index.html',
       inject: true
     }),
+    new AntdDayjsWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new ESLintPlugin({
       context: './src',
