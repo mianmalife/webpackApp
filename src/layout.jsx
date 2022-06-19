@@ -6,7 +6,6 @@ const Layout = () => {
   const location = useLocation()
   useEffect(() => {
     const { pathname } = location
-    console.log(pathname)
     if (pathname === '/') {
       console.log(2)
       setCurrent({ activeMenu: 'home' })
@@ -19,14 +18,15 @@ const Layout = () => {
       <Menu
         selectedKeys={[current.activeMenu]}
         theme={new Date().getHours() > 18 ? 'dark' : 'light'}
-        mode="horizontal">
-        <Menu.Item key="home">
+        mode='horizontal'
+      >
+        <Menu.Item key='home'>
           <Link to='/home'>React</Link>
         </Menu.Item>
-        <Menu.Item key="css">
+        <Menu.Item key='css'>
           <Link to='/css'>CSS</Link>
         </Menu.Item>
-        <Menu.Item key="less">
+        <Menu.Item key='less'>
           <Link to='/less'>LESS</Link>
         </Menu.Item>
       </Menu>

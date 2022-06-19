@@ -11,4 +11,6 @@ dayjs.locale('zh-cn')
 ReactDOM.render(
   <HashRouter>
     <App />
-  </HashRouter>, document.getElementById('app'))
+  </HashRouter>,
+  document.getElementById('app')
+)

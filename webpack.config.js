@@ -1,11 +1,11 @@
-const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
-const CopyPlugin = require("copy-webpack-plugin")
+const CopyPlugin = require('copy-webpack-plugin')
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 const ENV = process.env.NODE_ENV
 const OUT_PUT = {
@@ -15,10 +15,11 @@ const OUT_PUT = {
   clean: true
 }
 const config = {
-  entry: [
-    './src/index.jsx'
-  ],
-  output: ENV === 'development' ? OUT_PUT : Object.assign(OUT_PUT, { publicPath: './' }),
+  entry: ['./src/index.jsx'],
+  output:
+    ENV === 'development'
+      ? OUT_PUT
+      : Object.assign(OUT_PUT, { publicPath: './' }),
   devtool: 'source-map',
   module: {
     rules: [
@@ -27,7 +28,9 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            plugins: [ENV === 'development' && require.resolve('react-refresh/babel')].filter(Boolean)
+            plugins: [
+              ENV === 'development' && require.resolve('react-refresh/babel')
+            ].filter(Boolean)
           }
         },
         exclude: /node_modules/
@@ -52,11 +55,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       },
       {
         test: /\.less$/,
@@ -70,7 +69,7 @@ const config = {
                 modifyVars: {
                   'primary-color': '#5468ff',
                   'link-color': '#5468ff',
-                  'border-radius-base': '2px',
+                  'border-radius-base': '2px'
                 },
                 javascriptEnabled: true
               }
@@ -90,12 +89,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [
-      '.js',
-      '.jsx',
-      '.tsx',
-      '.ts'
-    ],
+    extensions: ['.js', '.jsx', '.tsx', '.ts'],
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
@@ -150,10 +144,10 @@ const config = {
         },
         parallel: true,
         extractComments: false // 不生成注释文件
-      }),
+      })
     ]
   }
-};
+}
 
 module.exports = (env, argv) => {
   if (ENV === 'production') {

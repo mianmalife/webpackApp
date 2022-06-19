@@ -12,9 +12,11 @@ function useTimeFormatterTest() {
   function onChangeDate(value) {
     setDateValue(value)
   }
-  return <Card style={{ margin: 20 }}>
-    <RangePicker onChange={onChangeDate} value={dateValue} />
-  </Card>
+  return (
+    <Card style={{ margin: 20 }}>
+      <RangePicker onChange={onChangeDate} value={dateValue} />
+    </Card>
+  )
 }
 
 export default useTimeFormatterTest
