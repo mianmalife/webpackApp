@@ -32,21 +32,7 @@ const config = {
               ENV === 'development' && require.resolve('react-refresh/babel')
             ].filter(Boolean)
           }
-        },
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader'
-        ]
+        }
       },
       {
         test: /\.ts(x)?$/,
@@ -54,14 +40,16 @@ const config = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
-      },
-      {
-        test: /\.less$/,
+        test: /\.(c|le)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          'postcss-loader',
           {
             loader: 'less-loader',
             options: {
