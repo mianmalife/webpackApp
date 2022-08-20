@@ -5,8 +5,10 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined
 } from '@ant-design/icons'
-import { Breadcrumb, Layout, Menu } from 'antd'
+import { Breadcrumb, Layout, Menu, Image } from 'antd'
 import React, { useState } from 'react'
+import SmileSvg from '@/asset/icon/smile.svg'
+import settingIcon from '@/asset/icon/setting.svg?url'
 import './App.less'
 const { Header, Content, Sider } = Layout
 const items1 = ['1', '2', '3'].map((key) => ({
@@ -81,10 +83,14 @@ const App = () => {
           <Content
             style={{
               padding: 24,
-              margin: 0
+              margin: 0,
+              background: '#fff'
             }}
           >
-            Content
+            <h3>svg react compnent</h3>
+            <SmileSvg />
+            <h3>svg url</h3>
+            <Image src={settingIcon} />
           </Content>
         </Layout>
       </Layout>

@@ -24,7 +24,8 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.[j|t]sx?$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -66,13 +67,24 @@ const config = {
         ]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         type: 'asset',
         parser: {
           dataUrlCondition: {
             maxSize: 12 * 1024 // 12kb
           }
         }
+      },
+      {
+        test: /\.svg$/i,
+        type: 'asset',
+        resourceQuery: /url/ // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
+        use: ['@svgr/webpack']
       }
     ]
   },
