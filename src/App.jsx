@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons'
 import { Breadcrumb, Layout, Menu, Image } from 'antd'
 import React, { useState } from 'react'
+import SvgIcon from '@/common/svgIcon'
 import SmileSvg from '@/asset/icon/smile.svg'
 import settingIcon from '@/asset/icon/setting.svg?url'
 import './App.less'
@@ -91,6 +92,8 @@ const App = () => {
             <SmileSvg />
             <h3>svg url</h3>
             <Image src={settingIcon} />
+            <h3>动态加载</h3>
+            <SvgIcon name='smile' style={{ fontSize: 60 }}></SvgIcon>
           </Content>
         </Layout>
       </Layout>
