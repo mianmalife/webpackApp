@@ -9,6 +9,7 @@
   "author": "zhangkx",
   "license": "ISC",
   "scripts": {
+    "clean": "rimraf node_modules",
     "build": "cross-env NODE_ENV=production webpack --progress --mode production",
     "start": "cross-env NODE_ENV=development webpack serve --progress --mode development",
     "prepare": "husky install",
@@ -21,7 +22,7 @@
   "foreground-scripts": "true",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "antd": "^4.22.4",
+    "antd": "^4.22.8",
     "axios": "^0.24.0",
     "clone-ele": "^1.0.3",
     "core-js": "^3.24.1",
@@ -67,6 +68,7 @@
     "postcss-loader": "^6.2.1",
     "prettier": "2.7.1",
     "react-refresh": "^0.11.0",
+    "rimraf": "^3.0.2",
     "terser-webpack-plugin": "^5.3.1",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",

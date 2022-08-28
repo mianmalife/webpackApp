@@ -1810,10 +1810,10 @@ antd-dayjs-webpack-plugin@^1.0.6:
   resolved "https://registry.npmmirror.com/antd-dayjs-webpack-plugin/-/antd-dayjs-webpack-plugin-1.0.6.tgz#7d98bcb51422248b8cd4a32e352a0425a3bffa3a"
   integrity sha512-UlK3BfA0iE2c5+Zz/Bd2iPAkT6cICtrKG4/swSik5MZweBHtgmu1aUQCHvICdiv39EAShdZy/edfP6mlkS/xXg==
 
-antd@^4.22.4:
-  version "4.22.6"
-  resolved "https://registry.npmmirror.com/antd/-/antd-4.22.6.tgz#f9b90072ab2550f931def2e2e93b26281760529e"
-  integrity sha512-cyGq4CFrKcHISkyvXHODqhV8X0W7r6GHP37H/KvvmYibz/1sdts3Sa0FoAPy/c165TjAcSC/ZHxJhuGbo42zvA==
+antd@^4.22.8:
+  version "4.22.8"
+  resolved "https://registry.npmmirror.com/antd/-/antd-4.22.8.tgz#e2f446932815a522a8aa3d285a8a9bdcb3d0fa9f"
+  integrity sha512-mqHuCg9itZX+z6wk+mvRBcfz/U9iiIXS4LoNkyo8X/UBgdN8CoetFmrdvA1UQy1BuWa0/n62LiS1LatdvoTuHw==
   dependencies:
     "@ant-design/colors" "^6.0.0"
     "@ant-design/icons" "^4.7.0"

@@ -1,26 +1,36 @@
 html {
   font-size: 16px;
 }
+
 body {
   font-size: 16px;
   background: #f0f2f5;
 }
+
 :root {
   --container-root: 100%;
 }
+
 #app {
+  svg {
+    fill: currentColor;
+  }
+
   height: var(--container-root);
+
   ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 }
+
 ::-webkit-scrollbar {
   background-color: #fff;
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #e2e2e2;
   border-radius: 4px;

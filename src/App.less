@@ -1,25 +1,22 @@
 .layoutContainer {
   height: var(--container-root);
   .logo {
-    float: left;
     width: 46px;
     height: 46px;
     background: url('@/asset/image/logo.png');
     background-size: 100%;
-    margin-top: 9px;
-    margin-right: 24px;
     background-repeat: no-repeat;
     background-position: center center;
+    margin-right: 20px;
+    flex-shrink: 0;
   }
-  .trigger {
-    color: #5468ff;
-    float: left;
-    padding: 23px 24px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: color 0.3s;
-    &:hover {
-      color: #1890ff;
-    }
+  .ant-layout-header {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+  }
+  .top__menulist {
+    flex: 1;
+    border: none;
   }
 }

@@ -33,7 +33,9 @@
     "space-before-function-paren": "off",
     "react/react-in-jsx-scope": "off",
     "multiline-ternary": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "quotes": 0,
+    "eol-last": 0
   },
   "globals": {
     "JSX": true,
