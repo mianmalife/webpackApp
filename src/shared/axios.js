@@ -1,71 +1,66 @@
 import axios from 'axios'
+import * as rax from 'retry-axios'
+import qs from 'qs'
+// const controller = new AbortController();
 
-const CancelToken = axios.CancelToken
+const instance = axios.create({
+  baseURL: '',
+  timeout: 30000,
+  paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'comma' })
+})
 
-const pendingMap = new Map()
-
-function getPendingKey (config) {
-  let { url, method, params, data } = config
-  if (typeof data === 'string') {
-    data = JSON.parse(data)
-  }
-  return [url, method, JSON.stringify(params), JSON.stringify(data)].join('&')
+instance.defaults.raxConfig = {
+  instance: instance,
+  retry: 3,
+  statusCodesToRetry: [[400, 599]]
 }
 
-function removePending (config) {
-  const pendingKey = getPendingKey(config)
-  if (pendingMap.has(pendingKey)) {
-    const cancelToken = pendingMap.get(pendingKey)
-    cancelToken(pendingKey)
-    pendingMap.delete(pendingKey)
-  }
+rax.attach(instance)
+
+export async function $http(url, config) {
+  const response = await instance.request({ url, ...config })
+  const result = response.data.msg
+  console.log(response)
+  return result
 }
 
-function addPending (config) {
-  const pendingKey = getPendingKey(config)
-  config.cancelToken = config.cancelToken || new CancelToken((cancel) => {
-    if (!pendingMap.has(pendingKey)) {
-      pendingMap.set(pendingKey, cancel)
-    }
-  })
+export async function mockData() {
+  return Promise.resolve(arguments[arguments.length - 1])
 }
-function fetchApi (axiosOpt, custOpt) {
-  const custOption = Object.assign({
-    repeat_request_cancel: true // 是否开启取消重复请求, 默认为 true
-  }, custOpt)
 
-  const instance = axios.create({
-    baseURL: '',
-    timeout: 30000
-  })
+// export function withCancelToken(ajax) {
+//   let signal;
+//   function send(data, config) {
+//     cancel();
+//     signal = controller.signal;
+//     return ajax(data, { ...config, signal });
+//   }
+//   function cancel() {
+//     if (signal) {
+//       controller.abort();
+//       signal = null;
+//     }
+//   }
 
-  // 添加请求拦截器
-  instance.interceptors.request.use(function (config) {
-    // 在发送请求之前做些什么
-    removePending(config)
-    custOption.repeat_request_cancel && addPending(config)
+//   return [send, cancel];
+// }
+
+instance.interceptors.request.use(
+  (config) => {
     return config
-  }, function (error) {
-    // 对请求错误做些什么
+  },
+  (error) => {
     return Promise.reject(error)
-  })
+  }
+)
 
-  // 添加响应拦截器
-  instance.interceptors.response.use(function (response) {
-    // 2xx 范围内的状态码都会触发该函数。
-    // 对响应数据做点什么
-    removePending(response.config)
-    return response.data
-  }, function (error) {
-    // 超出 2xx 范围的状态码都会触发该函数。
-    // 对响应错误做点什么
-    if (axios.isCancel(error)) {
-      console.warn('取消重复请求了', error.message)
-    }
-    error.config && removePending(error.config)
+instance.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (error) => {
     return Promise.reject(error)
-  })
-  return instance(axiosOpt)
-}
+  }
+)
 
-export default fetchApi
+export default instance
