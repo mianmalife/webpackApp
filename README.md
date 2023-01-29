@@ -1,4 +1,4 @@
-# Single page project based on Webpack5, React18, React-router v6, Antd4.x, Less
+# Single page project based on Webpack5, React18, Antd5.x, Less
 
 ## Building and running on localhost
 
