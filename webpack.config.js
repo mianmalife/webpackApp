@@ -6,8 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
-const ENV = process.env.NODE_ENV
+const devMode = process.env.NODE_ENV !== 'production'
 const OUT_PUT = {
   path: path.resolve(__dirname, 'dist'),
   filename: '[name].[contenthash].js',
@@ -16,10 +15,7 @@ const OUT_PUT = {
 }
 const config = {
   entry: ['./src/index.jsx'],
-  output:
-    ENV === 'development'
-      ? OUT_PUT
-      : Object.assign(OUT_PUT, { publicPath: './' }),
+  output: devMode ? OUT_PUT : Object.assign(OUT_PUT, { publicPath: './' }),
   devtool: 'source-map',
   module: {
     rules: [
@@ -29,9 +25,9 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            plugins: [
-              ENV === 'development' && require.resolve('react-refresh/babel')
-            ].filter(Boolean)
+            plugins: [devMode && require.resolve('react-refresh/babel')].filter(
+              Boolean
+            )
           }
         }
       },
@@ -43,27 +39,10 @@ const config = {
       {
         test: /\.(c|le)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2
-            }
-          },
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
           'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              lessOptions: {
-                modifyVars: {
-                  'primary-color': '#5468ff',
-                  'link-color': '#5468ff',
-                  'border-radius-base': '2px'
-                },
-                javascriptEnabled: true
-              }
-            }
-          }
+          'less-loader'
         ]
       },
       {
@@ -130,13 +109,12 @@ const config = {
       template: 'src/index.html',
       inject: true
     }),
-    new AntdDayjsWebpackPlugin(),
-    new MiniCssExtractPlugin(),
+    !devMode && new MiniCssExtractPlugin(),
     new ESLintPlugin({
       context: './src',
       extensions: ['tsx', 'ts', 'js', 'jsx']
     }),
-    ENV === 'development' && new ReactRefreshWebpackPlugin(),
+    devMode && new ReactRefreshWebpackPlugin(),
     new CopyPlugin({
       patterns: [
         {
@@ -166,7 +144,7 @@ const config = {
 }
 
 module.exports = (env, argv) => {
-  if (ENV === 'production') {
+  if (!devMode) {
     delete config.devtool
   } else {
     delete config.optimization

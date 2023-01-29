@@ -1,67 +1,44 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RootContext from './rootContext'
-import { Breadcrumb, Layout, Menu } from 'antd'
-import SvgIcon from '@/common/svgIcon'
+import { Breadcrumb, Layout, Menu, theme, DatePicker } from 'antd'
 import './App.less'
-import TestCmp from '@/page/reactPage/testCmp'
-const { Header, Content } = Layout
-const items1 = ['1', '2', '3', '4'].map((key) => ({
-  key,
-  label: `nav ${key}`
-}))
+const { Header, Content, Footer } = Layout
 
 const App = () => {
-  const [theme, setTheme] = useState('light')
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
+  const onChange = (date, dateString) => {
+    console.log(date, dateString)
   }
   return (
     <RootContext.Provider value={theme}>
-      <Layout className='layoutContainer'>
-        <Header
-          className='header'
-          style={{ backgroundColor: theme === 'light' ? '#fff' : '#001529' }}
-        >
-          <div className='logo'></div>
+      <Layout className='layout'>
+        <Header>
+          <div className='logo' />
           <Menu
-            theme={theme === 'light' ? 'light' : 'dark'}
-            className='top__menulist'
+            theme='dark'
             mode='horizontal'
-            defaultSelectedKeys={['1']}
-            items={items1}
+            defaultSelectedKeys={['2']}
+            items={new Array(15).fill(null).map((_, index) => {
+              const key = index + 1
+              return {
+                key,
+                label: `nav ${key}`
+              }
+            })}
           />
-          <SvgIcon
-            name={theme === 'light' ? 'sun' : 'moon'}
-            onClick={toggleTheme}
-            style={{ fontSize: 24, cursor: 'pointer' }}
-          ></SvgIcon>
         </Header>
-        <Layout
-          style={{
-            padding: '0 20px 20px',
-            margin: 0
-          }}
-        >
-          <Breadcrumb
-            style={{
-              margin: '16px 0',
-              userSelect: 'none'
-            }}
-          >
+        <Content style={{ padding: '0 50px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
-          <Content
-            style={{
-              padding: 20,
-              margin: 0,
-              background: '#fff'
-            }}
-          >
-            <TestCmp></TestCmp>
-          </Content>
-        </Layout>
+          <div className='site-layout-content'>
+            <DatePicker onChange={onChange} picker='week' />
+          </div>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          Ant Design Demo ©2023 Created by Skea
+        </Footer>
       </Layout>
     </RootContext.Provider>
   )
