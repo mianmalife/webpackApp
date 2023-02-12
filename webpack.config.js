@@ -144,7 +144,7 @@ const config = {
 }
 
 module.exports = (env, argv) => {
-  if (!devMode) {
+  if (argv.mode === 'production') {
     delete config.devtool
   } else {
     delete config.optimization
