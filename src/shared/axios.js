@@ -17,11 +17,10 @@ instance.defaults.raxConfig = {
 
 rax.attach(instance)
 
-export async function $http(url, config) {
-  const response = await instance.request({ url, ...config })
-  const result = response.data.msg
-  console.log(response)
-  return result
+export async function fetchApi(config) {
+  const response = await instance.request(config)
+  // 业务逻辑写这里
+  return response.data
 }
 
 export async function mockData() {

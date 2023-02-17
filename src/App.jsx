@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import RootContext from './rootContext'
 import { Breadcrumb, Layout, Menu, theme, DatePicker } from 'antd'
+import { fetchApi } from './shared/axios'
 import './App.less'
 const { Header, Content, Footer } = Layout
 
@@ -8,6 +9,14 @@ const App = () => {
   const onChange = (date, dateString) => {
     console.log(date, dateString)
   }
+  useEffect(() => {
+    fetchApi({
+      method: 'get',
+      url: 'https://dog.ceo/api/breeds/image/random'
+    }).then((res) => {
+      console.log(res)
+    })
+  })
   return (
     <RootContext.Provider value={theme}>
       <Layout className='layout'>
